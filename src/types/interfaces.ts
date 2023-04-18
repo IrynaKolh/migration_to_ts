@@ -29,3 +29,8 @@ export interface SourseResponse {
     language: string;
     country: string;
 }
+
+export interface ISources {
+    status: string;
+    sources: SourseResponse[];
+}
