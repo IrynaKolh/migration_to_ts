@@ -34,3 +34,17 @@ export interface ISources {
     status: string;
     sources: SourseResponse[];
 }
+
+export interface Options {
+    sources?: string;
+    apiKey?: string;
+}
+
+export enum Method {
+    GET = 'GET',
+    POST = 'POST',
+    PUT = 'PUT',
+    DELETE = 'DELETE',
+}
+
+export type CallbackFunction = (data: NewsResponse) => void;
