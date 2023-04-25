@@ -1,4 +1,4 @@
-import { CallbackFunction, Method, Options } from '../../types/interfaces';
+import { CallbackFunction, Method, NewsResponse, Options } from '../../types/interfaces';
 
 class Loader {
     baseLink: string;
@@ -10,9 +10,9 @@ class Loader {
     }
 
     getResp(
-        params: { endpoint: string; options: Options },
-        callback = () => {
-            console.error('No callback for GET response');
+        params: { endpoint: string; options?: Options },
+        callback = (data: NewsResponse) => {
+            console.error('No callback for GET response' + data.totalResults);
         }
     ) {
         this.load(Method.GET, params.endpoint, callback, params.options);
