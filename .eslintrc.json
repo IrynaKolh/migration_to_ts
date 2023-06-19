@@ -9,7 +9,9 @@
     ],
     "parserOptions": {
         "ecmaVersion": 2020,
-        "sourceType": "module"
+        "sourceType": "module",
+        "requireConfigFile": false,
+        "project": "./tsconfig.json"
     },
     "env": {
         "es6": true,
@@ -21,5 +23,6 @@
         "no-console": 0,
         "class-methods-use-this": "off",
         "@typescript-eslint/no-explicit-any": 2 
-    }
+    },
+    "ignorePatterns": ["*config.js"]
 }

@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const EslingPlugin = require('eslint-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index'),
@@ -13,15 +15,25 @@ const baseConfig = {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
-            { test: /\.ts$/i, use: 'ts-loader' },
+            {
+                test: /\.[tj]s$/i,
+                use: ['ts-loader'],
+                include: path.resolve(__dirname, 'src'),
+                exclude: /node-modules/,
+            },
+            {
+                test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
+                type: 'asset/resource',
+            },
         ],
     },
     resolve: {
         extensions: ['.ts', '.js'],
     },
     output: {
-        filename: 'index.js',
-        path: path.resolve(__dirname, '../dist'),
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].[contenthash].js',
+        assetModuleFilename: 'img/[hash][ext]',
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -29,7 +41,15 @@ const baseConfig = {
             filename: 'index.html',
         }),
         new CleanWebpackPlugin(),
-        new EslingPlugin({ extensions: 'ts' }),
+        new ESLintPlugin({ extensions: ['ts', 'js'] }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, './src/img'),
+                    to: path.resolve(__dirname, './dist/img'),
+                },
+            ],
+        }),
     ],
 };
 

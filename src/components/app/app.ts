@@ -16,13 +16,6 @@ class App {
         );
         this.controller.getSources((data: DataResponse) => this.view.drawSources(data));
     }
-
-    // start() {
-    //     (<HTMLDivElement>document.querySelector('.sources')).addEventListener('click', (e) =>
-    //         this.controller.getNews(e, (data) => this.view.drawNews(data))
-    //     );
-    //     this.controller.getSources((data) => this.view.drawSources(data));
-    // }
 }
 
 export default App;
