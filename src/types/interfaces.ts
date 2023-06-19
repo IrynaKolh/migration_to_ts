@@ -32,7 +32,7 @@ export interface SourseResponse {
 
 export interface ISources {
     status: string;
-    sources: SourseResponse[];
+    sources?: SourseResponse[];
 }
 
 export interface Options {
@@ -48,3 +48,5 @@ export enum Method {
 }
 
 export type CallbackFunction = (data: NewsResponse) => void;
+
+export type DataResponse = ISources & NewsResponse;
