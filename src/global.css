@@ -1,11 +1,16 @@
 body {
     color: #fff;
     background: #17181c;
-    font-family: sans-serif;
+    font-family: sans-serif;    
+}
+
+main {
+    min-height: 70vh;
 }
 
 header {
     padding: 10px 30px;
+    text-align: center;
 }
 
 header h1 {
@@ -18,18 +23,41 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 1em;      
 }
-footer .copyright {
-    font-size: 14px;
-    color: #333;
-    text-align: center;
+
+footer .copyright,
+footer .git-links, 
+footer .school-link {
+    font-size: 16px;
+    color: #ffffff; 
+    text-align: center;    
+    margin: 0.3em;
+    width: 170px;
 }
-footer .copyright a {
+
+footer .copyright a,
+footer .git-links a, 
+footer .school-link a {
     color: #444;
+    text-decoration: none;
+   
 }
-footer .copyright a:hover {
-    color: #555;
+
+footer .copyright a:hover,
+footer .git-links a:hover, 
+footer .school-link a:hover {
+    color: #555;   
 }
+
 footer .copyright:before {
     content: '©';
+}
+
+footer .school-link a img {
+   height: 40px;   
+}
+
+footer .school-link:hover {
+    filter: invert(50%) sepia(11%) saturate(2348%) hue-rotate(12deg) brightness(104%) contrast(89%);
 }
